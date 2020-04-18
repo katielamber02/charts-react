@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Welcome from "./WelcomeMessage";
+import Settings from "./Settings/Settings";
 import styled from "styled-components";
 import Layout from "./Layout";
 import Bar from "./Bar";
@@ -32,7 +32,7 @@ class App extends Component {
         <Layout>
           <AppProvider>
             <Bar />
-            <Welcome />
+            <Settings />
             <MyButton>button demo1 </MyButton>
             <MyButton primary>button demo 2</MyButton>
             <MyButton myprop>button demo 3</MyButton>
