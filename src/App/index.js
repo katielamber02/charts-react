@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Layout from "./Layout";
 import Bar from "./Bar";
 import { AppProvider } from "./AppProvider";
+import Content from "./Content";
 
 const MyButton = styled.button`
   border-radius: 2px;
@@ -32,7 +33,10 @@ class App extends Component {
         <Layout>
           <AppProvider>
             <Bar />
-            <Settings />
+            <Content>
+              <Settings />s
+            </Content>
+
             <MyButton>button demo1 </MyButton>
             <MyButton primary>button demo 2</MyButton>
             <MyButton myprop>button demo 3</MyButton>

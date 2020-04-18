@@ -15,7 +15,7 @@ export default function() {
   return (
     <AppContext.Consumer>
       {(context) => {
-        console.log(context.setFavourite);
+        //console.log(context.setFavourite);
         return (
           <Centered>
             <ButtonStyles onClick={context.setFavourite}>

@@ -1,4 +1,5 @@
 import React from "react";
+import cc from "cryptocompare";
 
 export const AppContext = React.createContext();
 
@@ -12,7 +13,14 @@ export class AppProvider extends React.Component {
       setFavourite: this.setFavourite,
     };
   }
-
+  componentDidMount() {
+    this.fetchApi();
+  }
+  fetchApi = async () => {
+    let data = (await cc.coinList()).Data;
+    // console.log(data);
+    this.setState({ data });
+  };
   setPage = (page) => {
     console.log("clicked");
     return this.setState({ page });
@@ -25,7 +33,7 @@ export class AppProvider extends React.Component {
     return {};
   }
   setFavourite = () => {
-    console.log("hello");
+    // console.log("hello");
     this.setState({
       page: "dashboard",
       visited: true,
@@ -33,7 +41,7 @@ export class AppProvider extends React.Component {
     localStorage.setItem("dash", JSON.stringify({ test: "hello" }));
   };
   render() {
-    console.log(AppContext);
+    console.log(this.state);
     return (
       <AppContext.Provider value={this.state}>
         {this.props.children}
