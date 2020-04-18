@@ -1,20 +1,17 @@
 import React, { Component } from "react";
 import "./App.css";
 import Welcome from "./WelcomeMessage";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Layout from "./Layout";
 import Bar from "./Bar";
+import { AppProvider } from "./AppProvider";
 
 const MyButton = styled.button`
   border-radius: 2px;
   color: green;
   font-size: 2em;
   border: 4px solid ${(props) => props.myprop};
-  ${(props) =>
-    props.primary &&
-    css`
-      color: yellow;
-    `};
+  color: ${(props) => (props.primary ? "yellow" : null)};
 `;
 const Button = styled.button`
   color: palevioletred;
@@ -32,14 +29,16 @@ class App extends Component {
   render() {
     return (
       <>
-        <Bar />
         <Layout>
-          <Welcome />
-          <MyButton>button demo1 </MyButton>
-          <MyButton primary>button demo 2</MyButton>
-          <MyButton myprop>button demo 3</MyButton>
-          <Button>demo 4</Button>
-          <TomatoButton primary>demo 5</TomatoButton>
+          <AppProvider>
+            <Bar />
+            <Welcome />
+            <MyButton>button demo1 </MyButton>
+            <MyButton primary>button demo 2</MyButton>
+            <MyButton myprop>button demo 3</MyButton>
+            <Button>demo 4</Button>
+            <TomatoButton primary>demo 5</TomatoButton>
+          </AppProvider>
         </Layout>
       </>
     );
