@@ -1,29 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 // import { DeletableTile } from "./Styles";
+import { Tile } from "./Tile";
 
 export const CoinHeaderGridStyled = styled.div`
-  display: grid;
   grid-template-columns: 1fr 1fr;
+  display: grid;
+
+  padding: 10px;
 `;
 
 export const CoinSymbol = styled.div`
   justify-self: right;
 `;
 
-// const DeleteIcon = styled.div`
-//   justify-self: right;
-//   display: none;
-//   ${DeletableTile}:hover & {
-//     display: block;
-//     color: red;
-//   }
-// `;
-
 export default function({ name, symbol }) {
   return (
     <CoinHeaderGridStyled>
-      <div> {name} </div>
+      <Tile>{name}</Tile>
       <CoinSymbol>{symbol}</CoinSymbol>
     </CoinHeaderGridStyled>
   );
