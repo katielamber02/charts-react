@@ -12,14 +12,16 @@ const StyledGrid = styled.div`
 `;
 
 export default function Coins({ favouriteSection }) {
-  function displayData(data, favouriteSection) {
-    return Object.keys(data).slice(0, favouriteSection ? 10 : 30);
+  function displayData(data, favouriteSection, favourites) {
+    console.log(favourites);
+    return favouriteSection ? favourites : Object.keys(data).slice(0, 30);
+    // return Object.keys(data).slice(0, favouriteSection ? 10 : 30);
   }
   return (
     <AppContext.Consumer>
-      {({ data }) => (
+      {({ data, favourites }) => (
         <StyledGrid>
-          {displayData(data, favouriteSection).map((coin) => (
+          {displayData(data, favouriteSection, favourites).map((coin) => (
             <Tile key={coin}>
               <SingleCoin coin={coin} favouriteSection={favouriteSection} />
             </Tile>
