@@ -6,7 +6,9 @@ import Coins from "./Coins";
 export default function Settings() {
   return (
     <>
+      <Coins favouriteSection={true} />
       <WelcomeMessage />
+
       <Confirmation />
       <Coins />
     </>

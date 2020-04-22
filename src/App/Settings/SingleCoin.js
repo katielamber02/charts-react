@@ -3,19 +3,28 @@ import { AppContext } from "../AppProvider";
 
 import CoinHeaderGrid from "../CoinHeaderGrid";
 import Image from "../Shared/Image";
-import { SelectableTile } from "../Tile";
+import { SelectableTile, DeletableTile } from "../Tile";
 
-export default function SingleCoin({ coin }) {
+export default function SingleCoin({ coin, favouriteSection }) {
   return (
     <AppContext.Consumer>
       {({ data }) => {
         let coinUnit = data[coin];
-        // console.log(mycoin);
+
+        let TileClass = SelectableTile;
+
+        if (favouriteSection) {
+          TileClass = DeletableTile;
+        }
         return (
-          <SelectableTile>
-            <CoinHeaderGrid name={coinUnit.CoinName} symbol={coinUnit.Symbol} />
+          <TileClass>
+            <CoinHeaderGrid
+              name={coinUnit.CoinName}
+              symbol={coinUnit.Symbol}
+              favouriteSection={favouriteSection}
+            />
             <Image coin={coinUnit} />
-          </SelectableTile>
+          </TileClass>
         );
       }}
     </AppContext.Consumer>
